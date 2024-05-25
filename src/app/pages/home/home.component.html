@@ -1,9 +1,13 @@
 
-@if(!acceptTerms) {
+
+@if(!($acceptTerms | async)) {
+
+
     <h3>Do you want to use NgRx?</h3>
-    <input [(ngModel)]="acceptTerms" type="checkbox"  >
+    <input (change)="onChange()" [value]="$acceptTerms | async" type="checkbox"  >
+
+} @else {
+   <h2>Thanks for love NgRx🎉🥳</h2>
 }
-@else {
-    <h3>Thanks for love 🥳 NgRx</h3>
-}
+
 
