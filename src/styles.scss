@@ -1,1 +1,34 @@
-/* You can add global styles to this file, and also import other style files */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden; /* Prevents scrolling */
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+}
+
+header {
+  background: #007bff; /* Adjusted to match the blue color */
+  padding: 10px;
+  text-align: center;
+  color: white;
+}
+
+nav {
+  background: #eaeaea; /* Adjusted to match the light gray color */
+  padding: 10px;
+  display: flex;
+  justify-content: space-around;
+}
+
+section {
+  flex: 1; /* This makes the section take up the remaining space */
+  text-align: center;
+  display: flex;
+  align-items: center; /* Center content vertically */
+  justify-content: center; /* Center content horizontally */
+  height: 100%;
+}
