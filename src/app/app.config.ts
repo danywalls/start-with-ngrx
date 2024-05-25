@@ -1,6 +1,6 @@
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
-import {provideStore, StoreModule} from "@ngrx/store";
+import {provideStore} from "@ngrx/store";
 import {homeReducer} from "./pages/home/state/home.reducer";
 
 export const appConfig = {

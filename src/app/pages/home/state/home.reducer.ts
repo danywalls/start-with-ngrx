@@ -11,7 +11,8 @@ const initialState: HomeState = {
 export const homeReducer = createReducer(
   initialState,
   on(
-    createAction('[Home Page] Accept Terms and Accept Terms and Accept Terms'), (state) => ({
+    createAction('[Home Page] Accept Terms'), (state) => (
+      {
       ...state,
       acceptTerms: !state.acceptTerms,
     })
