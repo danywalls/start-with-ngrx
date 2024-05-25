@@ -1,9 +1,7 @@
 import { Component, inject } from '@angular/core';
-
 import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { HomeState } from './state/home.reducer';
-import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-home',
