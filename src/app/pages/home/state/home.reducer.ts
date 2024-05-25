@@ -1,4 +1,5 @@
 import {createAction, createReducer, on} from "@ngrx/store";
+
 export interface HomeState {
   acceptTerms: boolean
 }

@@ -1,11 +1,6 @@
-
-
-@if(!($acceptTerms | async)) {
-
-
+@if(!$acceptTerms()) {
     <h3>Do you want to use NgRx?</h3>
-    <input (change)="onChange()" [value]="$acceptTerms | async" type="checkbox"  >
-
+    <input (change)="onChange()" [value]="$acceptTerms()" type="checkbox"  >
 } @else {
    <h2>Thanks for love NgRx🎉🥳</h2>
 }

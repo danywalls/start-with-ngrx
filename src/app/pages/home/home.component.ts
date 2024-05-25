@@ -10,14 +10,13 @@ import {tap} from "rxjs";
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, AsyncPipe],
+  imports: [FormsModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-
   private _store = inject(Store);
-  public $acceptTerms = this._store.select<HomeState>((state) => state.home.acceptTerms).pipe();
+  public $acceptTerms = toSignal(this._store.select<HomeState>((state) => state.home.acceptTerms))
 
   onChange() {
     this._store.dispatch({
