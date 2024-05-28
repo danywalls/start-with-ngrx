@@ -1,8 +1,7 @@
 @if(!$acceptTerms()) {
-    <h3>Do you want to use NgRx?</h3>
+    <h3>Are you agree to use to use NgRx?</h3>
     <input (change)="onChange()" [value]="$acceptTerms()" type="checkbox"  >
 } @else {
    <h2>Thanks for love NgRx🎉🥳</h2>
+  <button mat-button   (click)="onRejectTerms()">Reject Terms</button>
 }
-
-
