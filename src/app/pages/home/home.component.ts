@@ -17,13 +17,11 @@ export class HomeComponent {
   public $acceptTerms = toSignal(
     this._store.select<HomeState>((state) => state.home.acceptTerms),
   );
-
   onChange() {
     this._store.dispatch({
       type: '[Home Page] Accept Terms',
     });
   }
-
   onRejectTerms() {
     this._store.dispatch({
       type: '[Home Page] Reject Terms',
