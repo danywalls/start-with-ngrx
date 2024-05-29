@@ -12,4 +12,13 @@ export const homeReducer = createReducer(
     ...state,
     acceptTerms: false,
   })),
+  on(HomePageActions.playersLoad, (state) => ({
+    ...state,
+    loading: true,
+  })),
+  on(HomePageActions.playerLoadedSuccess, (state, { players }) => ({
+    ...state,
+    loading: false,
+    players,
+  })),
 );
