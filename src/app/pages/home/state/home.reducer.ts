@@ -1,13 +1,14 @@
-import { createAction, createReducer, on } from '@ngrx/store';
+import { createReducer, on } from '@ngrx/store';
 import { initialState } from './home.state';
+import { HomePageActions } from './home.actions';
 
 export const homeReducer = createReducer(
   initialState,
-  on(createAction('[Home Page] Accept Terms'), (state) => ({
+  on(HomePageActions.acceptTerms, (state) => ({
     ...state,
     acceptTerms: !state.acceptTerms,
   })),
-  on(createAction('[Home Page] Reject Terms'), (state) => ({
+  on(HomePageActions.rejectTerms, (state) => ({
     ...state,
     acceptTerms: false,
   })),

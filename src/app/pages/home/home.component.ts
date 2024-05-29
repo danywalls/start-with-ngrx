@@ -3,6 +3,7 @@ import { Store } from '@ngrx/store';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { HomeState } from './state/home.state';
 import { MatButton } from '@angular/material/button';
+import { HomePageActions } from './state/home.actions';
 
 @Component({
   selector: 'app-home',
@@ -18,13 +19,9 @@ export class HomeComponent {
     this._store.select<HomeState>((state) => state.home.acceptTerms),
   );
   onChange() {
-    this._store.dispatch({
-      type: '[Home Page] Accept Terms',
-    });
+    this._store.dispatch(HomePageActions.acceptTerms());
   }
   onRejectTerms() {
-    this._store.dispatch({
-      type: '[Home Page] Reject Terms',
-    });
+    this._store.dispatch(HomePageActions.rejectTerms());
   }
 }
