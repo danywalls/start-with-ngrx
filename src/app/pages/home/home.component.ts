@@ -4,6 +4,7 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { HomeState } from './state/home.state';
 import { MatButton } from '@angular/material/button';
 import { HomePageActions } from './state/home.actions';
+import {selectAcceptTerms, selectAllTaskDone, selectLoading, selectPlayers} from "./state/home.selectors";
 
 @Component({
   selector: 'app-home',
@@ -14,11 +15,11 @@ import { HomePageActions } from './state/home.actions';
 })
 export class HomeComponent implements OnInit {
   private _store = inject(Store);
-  public $loading = toSignal(this._store.select((state) => state.home.loading));
-  public $players = toSignal(this._store.select((state) => state.home.players));
-  public $acceptTerms = toSignal(
-    this._store.select<HomeState>((state) => state.home.acceptTerms),
-  );
+  public $loading = this._store.selectSignal(selectLoading);
+  public $players = this._store.selectSignal(selectPlayers);
+  public $acceptTerms = this._store.selectSignal(selectAcceptTerms);
+  public $allTasksDone = this._store.selectSignal(selectAllTaskDone);
+
   public ngOnInit(): void {
     this._store.dispatch(HomePageActions.playersLoad());
 

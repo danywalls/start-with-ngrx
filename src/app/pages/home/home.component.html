@@ -1,3 +1,9 @@
+@if (!$allTasksDone()) {
+  Wait for the players and  accept terms
+
+} @else {
+  <h2>Everything done!🥳</h2>
+}
 <div>
   @if (!$loading()) {
     <h3>TOP NBA Players</h3>
