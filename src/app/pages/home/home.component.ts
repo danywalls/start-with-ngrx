@@ -1,10 +1,10 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { toSignal } from '@angular/core/rxjs-interop';
-import { HomeState } from './state/home.state';
+
 import { MatButton } from '@angular/material/button';
 import { HomePageActions } from './state/home.actions';
 import {selectAcceptTerms, selectAllTaskDone, selectLoading, selectPlayers} from "./state/home.selectors";
+import {PlayersService} from "../../services/players.service";
 
 @Component({
   selector: 'app-home',
@@ -15,6 +15,7 @@ import {selectAcceptTerms, selectAllTaskDone, selectLoading, selectPlayers} from
 })
 export class HomeComponent implements OnInit {
   private _store = inject(Store);
+  private _playersService = inject(PlayersService);
   public $loading = this._store.selectSignal(selectLoading);
   public $players = this._store.selectSignal(selectPlayers);
   public $acceptTerms = this._store.selectSignal(selectAcceptTerms);
@@ -23,16 +24,11 @@ export class HomeComponent implements OnInit {
   public ngOnInit(): void {
     this._store.dispatch(HomePageActions.playersLoad());
 
-    setTimeout(() => {
-      this._store.dispatch(
-        HomePageActions.playerLoadedSuccess({
-          players: [
-            { id: 1, name: 'Lebron', points: 25 },
-            { id: 1, name: 'Curry', points: 35 },
-          ],
-        }),
-      );
-    }, 5000);
+    this._playersService.getPlayers().subscribe(players => {
+      this._store.dispatch(HomePageActions.playerLoadedSuccess({
+        players
+      }))
+    })
   }
 
   onChange() {

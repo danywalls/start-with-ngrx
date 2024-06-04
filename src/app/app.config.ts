@@ -4,6 +4,8 @@ import { provideStore } from '@ngrx/store';
 import { homeReducer } from './pages/home/state/home.reducer';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
+import {provideHttpClient, withInterceptors} from "@angular/common/http";
+import {authorizationInterceptor} from "./interceptors/authorization.interceptor";
 
 export const appConfig = {
   providers: [
@@ -18,5 +20,7 @@ export const appConfig = {
       connectInZone: true,
     }),
     provideAnimationsAsync(),
+
+    provideHttpClient(withInterceptors([authorizationInterceptor])),
   ],
 };

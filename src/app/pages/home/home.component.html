@@ -8,7 +8,7 @@
   @if (!$loading()) {
     <h3>TOP NBA Players</h3>
     @for (player of $players(); track player) {
-      <p>{{ player.name }} {{ player.points }}</p>
+      <p>{{ player.first_name }} {{ player.last_name }}</p>
     }
   } @else {
     <span>Loading..</span>
