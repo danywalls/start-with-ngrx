@@ -10,7 +10,11 @@ export class PlayersService {
 
   public getPlayers() {
     return this._http
-      .get<{ data: Array<Player> }>(`${environment.apiUrl}/players`)
+      .get<{ data: Array<Player> }>(`${environment.apiUrl}/players`, {
+        headers: {
+          Authorization: `${environment.token}`,
+        },
+      })
       .pipe(
         map((response) => response.data),
         delay(5000),

@@ -4,6 +4,9 @@
 } @else {
   <h2>Everything done!🥳</h2>
 }
+
+
+{{ $error() | json }}
 <div>
   @if (!$loading()) {
     <h3>TOP NBA Players</h3>
@@ -18,7 +21,7 @@
 <div>
   @if (!$acceptTerms()) {
     <h3>Are you agree to use to use NgRx?</h3>
-    <input (change)="onChange()" [value]="$acceptTerms()" type="checkbox" />
+    <input (change)="onChange()" [value]="$acceptTerms()" type="checkbox"/>
   } @else {
     <h2>Thanks for love NgRx🎉🥳</h2>
     <button mat-button (click)="onRejectTerms()">Reject Terms</button>

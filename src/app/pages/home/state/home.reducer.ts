@@ -21,4 +21,9 @@ export const homeReducer = createReducer(
     loading: false,
     players,
   })),
+  on(HomePageActions.playerLoadFailure, (state, { message }) => ({
+    ...state,
+    loading: false,
+    message,
+  })),
 );

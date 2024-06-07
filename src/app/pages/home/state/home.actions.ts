@@ -7,5 +7,6 @@ export const HomePageActions = createActionGroup({
     'Reject Terms': emptyProps(),
     'Players Load': emptyProps(),
     'Player Loaded Success': props<{ players: Array<any> }>(),
+    'Player Load Failure': props<{ message: string }>(),
   },
 });
