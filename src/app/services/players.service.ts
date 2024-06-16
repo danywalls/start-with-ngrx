@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { delay, map } from 'rxjs';
+import { concat, concatMap, delay, map, of, timeout } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Player } from '../entities/player';
 
@@ -10,14 +10,10 @@ export class PlayersService {
 
   public getPlayers() {
     return this._http
-      .get<{ data: Array<Player> }>(`${environment.apiUrl}/players`, {
-        headers: {
-          Authorization: `${environment.token}`,
-        },
-      })
+      .get<{ data: Array<Player> }>(`${environment.apiUrl}/players`)
       .pipe(
         map((response) => response.data),
-        delay(5000),
+        delay(5000)
       );
   }
 }

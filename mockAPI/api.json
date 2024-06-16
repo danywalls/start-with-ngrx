@@ -1,0 +1,12 @@
+{
+  "players": [
+    {
+      "first_name": "Stephen",
+      "last_name": "Curry",
+      "position": "G",
+      "height": "6-2",
+      "weight": "185",
+      "jersey_number": "30"
+    }
+  ]
+}

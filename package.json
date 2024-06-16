@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "api": "npx json-server mockAPI/api.json",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
