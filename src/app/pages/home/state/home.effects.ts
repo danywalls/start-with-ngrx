@@ -7,7 +7,7 @@ import { catchError, concatMap, map, of } from 'rxjs';
 export const loadPlayersEffect = createEffect(
   (actions$ = inject(Actions), playersService = inject(PlayersService)) => {
     return actions$.pipe(
-      ofType(HomePageActions.playersLoad),
+      ofType(HomePageActions.playerLoad),
       concatMap(() =>
         playersService.getPlayers().pipe(
           map((players) => HomePageActions.playerLoadedSuccess({ players })),
