@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { concat, concatMap, delay, map, of, timeout } from 'rxjs';
+import { delay, map } from 'rxjs';
 import { environment } from '../../environments/environment';
 import { Player } from '../entities/player';
 
@@ -16,4 +16,6 @@ export class PlayersService {
         delay(5000)
       );
   }
+
+
 }

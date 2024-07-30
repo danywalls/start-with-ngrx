@@ -1,12 +1,74 @@
 {
-  "players": [
+  "menorca": [
     {
-      "first_name": "Stephen",
-      "last_name": "Curry",
-      "position": "G",
-      "height": "6-2",
-      "weight": "185",
-      "jersey_number": "30"
+      "id": "1",
+      "name": "Ciutadella de Menorca",
+      "description": "A charming port city with a picturesque old town and a beautiful cathedral.",
+      "price": 0,
+      "stars": 4.8
+    },
+    {
+      "id": "2",
+      "name": "Cala Macarella",
+      "description": "A stunning beach with crystal clear waters and white sand, ideal for swimming and sunbathing.",
+      "price": 0,
+      "stars": 4.7
+    },
+    {
+      "id": "3",
+      "name": "Cova d'en Xoroi",
+      "description": "A unique cave bar with breathtaking views of the Mediterranean Sea, perfect for sunset drinks.",
+      "price": 15,
+      "stars": 4.5
+    },
+    {
+      "id": "4",
+      "name": "Monte Toro",
+      "description": "The highest point in Menorca, offering panoramic views of the entire island.",
+      "price": 0,
+      "stars": 4.6
+    },
+    {
+      "id": "5",
+      "name": "Fornells",
+      "description": "A traditional fishing village known for its seafood restaurants and water sports.",
+      "price": 0,
+      "stars": 4.4
+    },
+    {
+      "id": "6",
+      "name": "Binibeca Vell",
+      "description": "A charming whitewashed village with narrow streets and a picturesque harbor.",
+      "price": 0,
+      "stars": 4.3
+    },
+    {
+      "id": "7",
+      "name": "Naveta des Tudons",
+      "description": "An ancient megalithic chamber tomb dating back to the Bronze Age.",
+      "price": 2,
+      "stars": 4.2
+    },
+    {
+      "id": "8",
+      "name": "Cala Mitjana",
+      "description": "A beautiful secluded beach surrounded by cliffs and pine forests.",
+      "price": 0,
+      "stars": 4.5
+    },
+    {
+      "id": "9",
+      "name": "Mahon",
+      "description": "The capital city of Menorca, known for its historic architecture and lively port.",
+      "price": 0,
+      "stars": 4.4
+    },
+    {
+      "id": "10",
+      "name": "Lighthouse of Favaritx",
+      "description": "A scenic lighthouse located in a rugged and dramatic coastal area.",
+      "price": 0,
+      "stars": 4.6
     }
   ]
 }
