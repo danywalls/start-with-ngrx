@@ -18,6 +18,8 @@ export const loadPlacesEffect$ = createEffect(
       ),
     );
   },
+
+  { functional: true },
 );
 
 export const updatePlaceEffect$ = createEffect(
@@ -36,6 +38,8 @@ export const updatePlaceEffect$ = createEffect(
       ),
     );
   },
+
+  { functional: true },
 );
 
 export const addPlaceEffect$ = createEffect(
@@ -52,6 +56,7 @@ export const addPlaceEffect$ = createEffect(
       ),
     );
   },
+  { functional: true },
 );
 
 export const deletePlaceEffect$ = createEffect(
@@ -70,4 +75,5 @@ export const deletePlaceEffect$ = createEffect(
       ),
     );
   },
+  { functional: true },
 );

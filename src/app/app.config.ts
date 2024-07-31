@@ -8,6 +8,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authorizationInterceptor } from './interceptors/authorization.interceptor';
 import { provideEffects } from '@ngrx/effects';
 import * as homeEffects from './pages/home/state/home.effects';
+import * as placeEffects from './pages/places/state/places.effects';
 
 export const appConfig = {
   providers: [
@@ -21,7 +22,7 @@ export const appConfig = {
       trace: true,
       connectInZone: true,
     }),
-    provideEffects(homeEffects),
+    provideEffects([homeEffects, placeEffects]),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([authorizationInterceptor])),
   ],
