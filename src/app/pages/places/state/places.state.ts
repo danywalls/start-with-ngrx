@@ -7,7 +7,7 @@ export type PlacesState = {
   error: string | undefined;
 };
 
-export const initialState: PlacesState = {
+export const placesInitialState: PlacesState = {
   error: '',
   loading: false,
   placeSelected: undefined,
