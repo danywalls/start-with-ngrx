@@ -1,2 +1,19 @@
 <h2>My Favorite Places in Menorca</h2>
 
+@if (error$ | async; as error) {
+  <h3>Ups we found a error {{ error }}</h3>
+}
+
+@if (places$ | async; as places) {
+
+  @for (place of places; track place) {
+    <div>
+      <h3>{{ place.name }}</h3>
+      <p>{{ place.description }}</p>
+      <span>{{ place.price }}</span>
+      <span>{{ place.stars }}</span>
+      <button> Edit</button>
+      <button> Remove</button>
+    </div>
+  }
+}

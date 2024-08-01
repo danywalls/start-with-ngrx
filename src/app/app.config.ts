@@ -8,13 +8,15 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authorizationInterceptor } from './interceptors/authorization.interceptor';
 import { provideEffects } from '@ngrx/effects';
 import * as homeEffects from './pages/home/state/home.effects';
-import * as placeEffects from './pages/places/state/places.effects';
+import * as placesEffects from './pages/places/state/places.effects';
+import { placesReducer } from './pages/places/state/places.reducer';
 
 export const appConfig = {
   providers: [
     provideRouter(routes),
     provideStore({
       home: homeReducer,
+      places: placesReducer,
     }),
     provideStoreDevtools({
       name: 'nba-app',
@@ -22,7 +24,7 @@ export const appConfig = {
       trace: true,
       connectInZone: true,
     }),
-    provideEffects([homeEffects, placeEffects]),
+    provideEffects([homeEffects, placesEffects]),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([authorizationInterceptor])),
   ],
