@@ -12,7 +12,7 @@ export const loadPlacesEffect$ = createEffect(
         placesService.getAll().pipe(
           map((places) => PlacesApiActions.loadSuccess({ places })),
           catchError((error) =>
-            of(PlacesApiActions.loadFailure({ message: error })),
+            of(PlacesApiActions.loadFailure({ message: error.message })),
           ),
         ),
       ),

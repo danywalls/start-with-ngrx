@@ -11,5 +11,13 @@ export const placesInitialState: PlacesState = {
   error: '',
   loading: false,
   placeSelected: undefined,
-  places: [],
+  places: [
+    {
+      id: '1',
+      name: 'Toro',
+      description: 'Great viewss',
+      price: 0,
+      stars: 3,
+    },
+  ],
 };
