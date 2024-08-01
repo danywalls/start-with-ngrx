@@ -1,11 +1,45 @@
-<header>
-  <h1>My App</h1>
+<header class="hero is-primary">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        My Favorite Places
+      </h1>
+      <h2 class="subtitle">
+        A collection of places I've visited and loved
+      </h2>
+    </div>
+  </div>
 </header>
-<nav>
-  <a routerLink="">Home</a>
-  <a routerLink="/places">Places</a>
-  <a routerLink="/about">About</a>
+
+<nav class="navbar is-light">
+  <div class="container">
+    <div class="navbar-brand">
+      <a class="navbar-item" routerLink="/places">
+        Home
+      </a>
+      <a class="navbar-item" routerLink="/places">
+        Places
+      </a>
+      <a class="navbar-item" routerLink="/about">
+        About
+      </a>
+      <a class="navbar-item" href="#">
+        Contact
+      </a>
+    </div>
+  </div>
 </nav>
-<section>
+
+<div class="container">
   <router-outlet></router-outlet>
-</section>
+</div>
+
+
+<footer class="footer">
+  <div class="content has-text-centered">
+    <p>
+      <strong>Favorite Places</strong> by <a href="#">Your Name</a>. The source code is licensed
+      <a href="http://opensource.org/licenses/mit-license.php">MIT</a>.
+    </p>
+  </div>
+</footer>
