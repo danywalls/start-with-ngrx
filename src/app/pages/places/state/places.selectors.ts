@@ -8,7 +8,7 @@ const selectPlaces = createSelector(
   (placeState) => placeState.places,
 );
 
-const selectActivePlace = createSelector(
+const selectPlaceSelected = createSelector(
   selectPlaceState,
   (placeState) => placeState.placeSelected,
 );
@@ -23,7 +23,7 @@ const selectError = createSelector(
 
 export default {
   placesSelector: selectPlaces,
-  activePlaceSelector: selectActivePlace,
+  selectPlaceSelected: selectPlaceSelected,
   loadingSelector: selectLoading,
   errorSelector: selectError,
 };

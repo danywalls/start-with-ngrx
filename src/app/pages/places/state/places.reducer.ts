@@ -8,10 +8,20 @@ export const placesReducer = createReducer(
     ...state,
     loading: true,
   })),
+  on(PlacesPageActions.selectPlace, (state, { place }) => ({
+    ...state,
+    placeSelected: place,
+  })),
+  on(PlacesPageActions.unSelectPlace, (state) => ({
+    ...state,
+    placeSelected: undefined,
+  })),
+
   on(PlacesApiActions.loadSuccess, (state, { places }) => ({
     ...state,
     places: [...places],
   })),
+
   on(PlacesApiActions.loadFailure, (state, { message }) => ({
     ...state,
     loading: false,
@@ -30,7 +40,8 @@ export const placesReducer = createReducer(
   on(PlacesApiActions.updateSuccess, (state, { place }) => ({
     ...state,
     loading: false,
-    places: [...state.places.filter((p) => p.id !== place.id), place],
+    placeSelected: undefined,
+    places: state.places.map((p) => (p.id === place.id ? place : p)),
   })),
   on(PlacesApiActions.updateFailure, (state, { message }) => ({
     ...state,
@@ -40,6 +51,7 @@ export const placesReducer = createReducer(
   on(PlacesApiActions.deleteSuccess, (state, { id }) => ({
     ...state,
     loading: false,
+    placeSelected: undefined,
     places: [...state.places.filter((p) => p.id !== id)],
   })),
   on(PlacesApiActions.deleteFailure, (state, { message }) => ({

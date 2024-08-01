@@ -1,19 +1,27 @@
-<h2>My Favorite Places in Menorca</h2>
-
 @if (error$ | async; as error) {
   <h3>Ups we found a error {{ error }}</h3>
 }
 
 @if (places$ | async; as places) {
+  <div class="columns is-multiline is-flex is-flex-wrap-wrap">
+    @for (place of places; track place) {
+      <app-place-card [place]="place"/>
+    }
+  </div>
 
-  @for (place of places; track place) {
-    <div>
-      <h3>{{ place.name }}</h3>
-      <p>{{ place.description }}</p>
-      <span>{{ place.price }}</span>
-      <span>{{ place.stars }}</span>
-      <button> Edit</button>
-      <button> Remove</button>
-    </div>
-  }
+
 }
+
+@if (placeSelected$ | async; as selectedPlace) {
+  <div class="modal is-active">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+      adas
+      {{ selectedPlace.name | json }}
+      <app-place-form></app-place-form>
+    </div>
+    <button (click)="onClose()" class="modal-close is-large" aria-label="close"></button>
+  </div>
+}
+
+

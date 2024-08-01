@@ -25,7 +25,7 @@ export const loadPlacesEffect$ = createEffect(
 export const updatePlaceEffect$ = createEffect(
   (actions$ = inject(Actions), placesService = inject(PlacesService)) => {
     return actions$.pipe(
-      ofType(PlacesPageActions.addPlace),
+      ofType(PlacesPageActions.updatePlace),
       concatMap(({ place }) =>
         placesService.update(place).pipe(
           map((apiPlace) =>
@@ -51,6 +51,23 @@ export const addPlaceEffect$ = createEffect(
           map((apiPlace) => PlacesApiActions.addSuccess({ place: apiPlace })),
           catchError((error) =>
             of(PlacesApiActions.addFailure({ message: error })),
+          ),
+        ),
+      ),
+    );
+  },
+  { functional: true },
+);
+
+export const deletePlaceSuccessEffect$ = createEffect(
+  (actions$ = inject(Actions), placesService = inject(PlacesService)) => {
+    return actions$.pipe(
+      ofType(PlacesApiActions.deleteSuccess),
+      mergeMap(() =>
+        placesService.getAll().pipe(
+          map((places) => PlacesApiActions.loadSuccess({ places })),
+          catchError((error) =>
+            of(PlacesApiActions.loadFailure({ message: error.message })),
           ),
         ),
       ),

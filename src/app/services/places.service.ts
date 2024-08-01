@@ -15,10 +15,15 @@ export class PlacesService {
   }
 
   update(place: Place): Observable<Place> {
-    return this.http.put<Place>(environment.menorcaPlacesAPI, place);
+    console.log('updating');
+    return this.http.put<Place>(
+      `${environment.menorcaPlacesAPI}/${place.id}`,
+      place,
+    );
   }
 
   getAll(): Observable<Array<Place>> {
+    console.log(environment.menorcaPlacesAPI);
     return this.http.get<Array<Place>>(environment.menorcaPlacesAPI);
   }
 
