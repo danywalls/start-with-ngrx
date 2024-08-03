@@ -2,22 +2,25 @@
   <div class="card place-card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img [alt]="place().description" [src]="place().avatar">
+        <img [alt]="place().description" [src]="place().avatar" />
       </figure>
     </div>
     <div class="card-content">
       <div class="media">
         <div class="media-content">
           <p class="title is-4">{{ place().name }}</p>
-          <p class="subtitle is-6">Visited on: <span>{{ place().createdAt }}</span></p>
+          <p class="subtitle is-6">
+            Visited on: <span>{{ place().createdAt }}</span>
+          </p>
         </div>
       </div>
       <div class="content">
         {{ place().description }}.
-        <br>
+        <br />
         <strong>Price:</strong> {{ place().price }}
       </div>
       <div class="buttons">
+        <a (click)="goEditPlace(place().id)" class="button is-info">Edit</a>
         <button (click)="edit()" class="button is-info">Change Name</button>
         <button (click)="remove()" class="button is-danger">Remove</button>
       </div>

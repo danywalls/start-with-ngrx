@@ -23,11 +23,14 @@ export class PlacesService {
   }
 
   getAll(): Observable<Array<Place>> {
-    console.log(environment.menorcaPlacesAPI);
     return this.http.get<Array<Place>>(environment.menorcaPlacesAPI);
   }
 
   delete(id: string): Observable<string> {
     return this.http.delete<string>(`${environment.menorcaPlacesAPI}/${id}`);
+  }
+
+  getById(id: string): Observable<Place> {
+    return this.http.get<Place>(`${environment.menorcaPlacesAPI}/${id}`);
   }
 }

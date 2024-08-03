@@ -1,3 +1,4 @@
+<app-place-create />
 @if (error$ | async; as error) {
   <h3>Ups we found a error {{ error }}</h3>
 }
@@ -5,11 +6,9 @@
 @if (places$ | async; as places) {
   <div class="columns is-multiline is-flex is-flex-wrap-wrap">
     @for (place of places; track place) {
-      <app-place-card [place]="place"/>
+      <app-place-card [place]="place" />
     }
   </div>
-
-
 }
 
 @if (placeSelected$ | async; as selectedPlace) {
@@ -18,8 +17,10 @@
     <div class="modal-content">
       <app-place-form></app-place-form>
     </div>
-    <button (click)="onClose()" class="modal-close is-large" aria-label="close"></button>
+    <button
+      (click)="onClose()"
+      class="modal-close is-large"
+      aria-label="close"
+    ></button>
   </div>
 }
-
-

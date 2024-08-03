@@ -13,9 +13,7 @@ export class PlayersService {
       .get<{ data: Array<Player> }>(`${environment.apiUrl}/players`)
       .pipe(
         map((response) => response.data),
-        delay(5000)
+        delay(5000),
       );
   }
-
-
 }

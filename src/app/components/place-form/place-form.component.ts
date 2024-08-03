@@ -22,7 +22,6 @@ export class PlaceFormComponent {
   }
 
   save(place: Place, name: string) {
-    console.log('clicked');
     this.store.dispatch(
       PlacesPageActions.updatePlace({
         place: {

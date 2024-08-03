@@ -21,12 +21,12 @@ export const placesReducer = createReducer(
     ...state,
     places: [...places],
   })),
-
   on(PlacesApiActions.loadFailure, (state, { message }) => ({
     ...state,
     loading: false,
     error: message,
   })),
+
   on(PlacesApiActions.addSuccess, (state, { place }) => ({
     ...state,
     loading: false,
@@ -37,6 +37,17 @@ export const placesReducer = createReducer(
     loading: false,
     message,
   })),
+  on(PlacesApiActions.getPlaceSuccess, (state, { place }) => ({
+    ...state,
+    loading: false,
+    placeSelected: place,
+  })),
+  on(PlacesApiActions.getPlaceFailure, (state, { message }) => ({
+    ...state,
+    loading: false,
+    message,
+  })),
+
   on(PlacesApiActions.updateSuccess, (state, { place }) => ({
     ...state,
     loading: false,

@@ -5,11 +5,18 @@ import { AsyncPipe, JsonPipe } from '@angular/common';
 import { PlacesPageActions } from './state/places.actions';
 import { PlaceCardComponent } from '../../components/place-card/place-card.component';
 import { PlaceFormComponent } from '../../components/place-form/place-form.component';
+import { PlaceCreateComponent } from '../../components/place-create/place-create.component';
 
 @Component({
   selector: 'app-places',
   standalone: true,
-  imports: [AsyncPipe, PlaceCardComponent, PlaceFormComponent, JsonPipe],
+  imports: [
+    AsyncPipe,
+    PlaceCardComponent,
+    PlaceFormComponent,
+    JsonPipe,
+    PlaceCreateComponent,
+  ],
   templateUrl: './places.component.html',
   styleUrl: './places.component.scss',
 })

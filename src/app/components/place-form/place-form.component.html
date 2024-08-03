@@ -1,22 +1,31 @@
 @if (placeSelected$ | async; as selectedPlace) {
-
   <div class="field">
     <label class="label" for="placeName">Place Name</label>
     <div class="control">
-      <input id="placeName" #placeName [value]="selectedPlace.name" class="input" placeholder="Place Name" type="text">
+      <input
+        id="placeName"
+        #placeName
+        [value]="selectedPlace.name"
+        class="input"
+        placeholder="Place Name"
+        type="text"
+      />
     </div>
   </div>
 
   <div class="field is-grouped">
     <div class="control">
-      <button (click)="save(selectedPlace, placeName.value)" class="button is-primary">Save</button>
+      <button
+        (click)="save(selectedPlace, placeName.value)"
+        class="button is-primary"
+      >
+        Save
+      </button>
     </div>
     <div class="control">
-      <button (click)="delete(selectedPlace.id)" class="button is-danger">Delete</button>
+      <button (click)="delete(selectedPlace.id)" class="button is-danger">
+        Delete
+      </button>
     </div>
   </div>
-
 }
-
-
-
