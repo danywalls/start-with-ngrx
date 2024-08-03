@@ -2,7 +2,7 @@
   <div class="card place-card">
     <div class="card-image">
       <figure class="image is-4by3">
-        <img [alt]="place().description" [src]="place().avatar" />
+        <img [alt]="place().description" [src]="place().avatar"/>
       </figure>
     </div>
     <div class="card-content">
@@ -16,11 +16,11 @@
       </div>
       <div class="content">
         {{ place().description }}.
-        <br />
+        <br/>
         <strong>Price:</strong> {{ place().price }}
       </div>
       <div class="buttons">
-        <a (click)="goEditPlace(place().id)" class="button is-info">Edit</a>
+        <a (click)="goEditPlace()" class="button is-info">Edit</a>
         <button (click)="edit()" class="button is-info">Change Name</button>
         <button (click)="remove()" class="button is-danger">Remove</button>
       </div>
