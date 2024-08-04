@@ -10,7 +10,6 @@ export const PlacesPageActions = createActionGroup({
     'Delete Place': props<{ id: string }>(),
     'Select Place': props<{ place: Place }>(),
     'UnSelect Place': emptyProps(),
-    'Edit Place': props<{ id: string }>(),
   },
 });
 
@@ -19,9 +18,6 @@ export const PlacesApiActions = createActionGroup({
   events: {
     'Load Success': props<{ places: Array<Place> }>(),
     'Load Failure': props<{ message: string }>(),
-
-    'Get Place Success': props<{ place: Place }>(),
-    'Get Place Failure': props<{ message: string }>(),
 
     'Add Success': props<{ place: Place }>(),
     'Add Failure': props<{ message: string }>(),

@@ -10,11 +10,13 @@ import { provideEffects } from '@ngrx/effects';
 import * as homeEffects from './pages/home/state/home.effects';
 import * as placesEffects from './pages/places/state/places.effects';
 import { placesReducer } from './pages/places/state/places.reducer';
+import { provideRouterStore, routerReducer } from '@ngrx/router-store';
 
 export const appConfig = {
   providers: [
     provideRouter(routes),
     provideStore({
+      router: routerReducer,
       home: homeReducer,
       places: placesReducer,
     }),
@@ -27,5 +29,6 @@ export const appConfig = {
     provideEffects([homeEffects, placesEffects]),
     provideAnimationsAsync(),
     provideHttpClient(withInterceptors([authorizationInterceptor])),
+    provideRouterStore(),
   ],
 };

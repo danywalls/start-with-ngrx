@@ -20,7 +20,7 @@
         <strong>Price:</strong> {{ place().price }}
       </div>
       <div class="buttons">
-        <a (click)="goEditPlace()" class="button is-info">Edit</a>
+        <a [routerLink]="['/places', place().id]" class="button is-info">Edit</a>
         <button (click)="edit()" class="button is-info">Change Name</button>
         <button (click)="remove()" class="button is-danger">Remove</button>
       </div>

@@ -2,16 +2,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { inject } from '@angular/core';
 import { PlacesService } from '../../../services/places.service';
 import { PlacesApiActions, PlacesPageActions } from './places.actions';
-import {
-  catchError,
-  concatMap,
-  exhaustMap,
-  map,
-  mergeMap,
-  of,
-  tap,
-} from 'rxjs';
-import { Router } from '@angular/router';
+import { catchError, concatMap, exhaustMap, map, mergeMap, of } from 'rxjs';
 
 export const loadPlacesEffect$ = createEffect(
   (actions$ = inject(Actions), placesService = inject(PlacesService)) => {
@@ -60,31 +51,6 @@ export const addPlaceEffect$ = createEffect(
           map((apiPlace) => PlacesApiActions.addSuccess({ place: apiPlace })),
           catchError((error) =>
             of(PlacesApiActions.addFailure({ message: error })),
-          ),
-        ),
-      ),
-    );
-  },
-  { functional: true },
-);
-
-export const getPlaceEffect$ = createEffect(
-  (
-    actions$ = inject(Actions),
-    placesService = inject(PlacesService),
-    router = inject(Router),
-  ) => {
-    return actions$.pipe(
-      ofType(PlacesPageActions.editPlace),
-      mergeMap(({ id }) =>
-        placesService.getById(id).pipe(
-          tap(() => console.log('get by id')),
-          map((apiPlace) => {
-            router.navigate(['/places', apiPlace.id]);
-            return PlacesApiActions.getPlaceSuccess({ place: apiPlace });
-          }),
-          catchError((error) =>
-            of(PlacesApiActions.getPlaceFailure({ message: error })),
           ),
         ),
       ),

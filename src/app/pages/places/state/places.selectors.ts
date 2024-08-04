@@ -1,5 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { PlacesState } from './places.state';
+import { getRouterSelectors } from '@ngrx/router-store';
 
 const selectPlaceState = createFeatureSelector<PlacesState>('places');
 
@@ -21,9 +22,18 @@ const selectError = createSelector(
   (placeState) => placeState.error,
 );
 
+export const { selectRouteParams } = getRouterSelectors();
+
+export const selectPlaceById = createSelector(
+  selectPlaces,
+  selectRouteParams,
+  (places, { id }) => places.find((place) => place.id === id),
+);
+
 export default {
   placesSelector: selectPlaces,
   selectPlaceSelected: selectPlaceSelected,
   loadingSelector: selectLoading,
   errorSelector: selectError,
+  selectPlaceById,
 };

@@ -23,8 +23,4 @@ export class PlaceCardComponent {
   remove() {
     this.store.dispatch(PlacesPageActions.deletePlace({ id: this.place().id }));
   }
-
-  goEditPlace() {
-    this.store.dispatch(PlacesPageActions.editPlace({ id: this.place().id }));
-  }
 }
