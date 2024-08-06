@@ -1,5 +1,66 @@
 @if (place$ | async; as place) {
-  {{ place | json }}
+
+  <section class="section">
+    <div class="container">
+      <h1 class="title">Edit Place</h1>
+      <form>
+
+        <!-- Name -->
+        <div class="field">
+          <label class="label">Name</label>
+          <div class="control">
+            <input class="input" type="text" placeholder="Enter place name" required>
+          </div>
+        </div>
+
+        <!-- Description -->
+        <div class="field">
+          <label class="label">Description</label>
+          <div class="control">
+            <textarea class="textarea" placeholder="Enter place description" required></textarea>
+          </div>
+        </div>
+
+        <!-- Price -->
+        <div class="field">
+          <label class="label">Price</label>
+          <div class="control">
+            <input class="input" type="number" step="0.01" placeholder="Enter place price" required>
+          </div>
+        </div>
+
+        <!-- Stars -->
+        <div class="field">
+          <label class="label">Stars</label>
+          <div class="control">
+            <input class="input" type="number" step="0.1" min="0" max="5" placeholder="Enter place stars" required>
+          </div>
+        </div>
+
+        <!-- Avatar -->
+        <div class="field">
+          <label class="label">Avatar URL</label>
+          <div class="control">
+            <input class="input" type="url" placeholder="Enter avatar URL">
+          </div>
+        </div>
+
+
+        <!-- Buttons -->
+        <div class="field is-grouped">
+          <div class="control">
+            <button class="button is-primary" type="submit">Save</button>
+          </div>
+          <div class="control">
+            <button class="button is-danger" type="button">Delete</button>
+          </div>
+          <div class="control">
+            <button (click)="cancel()" class="button is-light" type="reset">Cancel</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
 } @else {
   <span>Ups </span>
 }

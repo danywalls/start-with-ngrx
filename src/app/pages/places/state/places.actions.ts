@@ -8,6 +8,7 @@ export const PlacesPageActions = createActionGroup({
     'Add Place': props<{ place: Place }>(),
     'Update Place': props<{ place: Place }>(),
     'Delete Place': props<{ id: string }>(),
+    'Cancel Place': emptyProps(),
     'Select Place': props<{ place: Place }>(),
     'UnSelect Place': emptyProps(),
   },

@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import PlacesSelectors from '../state/places.selectors';
 import { AsyncPipe, JsonPipe } from '@angular/common';
+import { PlacesPageActions } from '../state/places.actions';
 
 @Component({
   selector: 'app-place-edit',
@@ -11,6 +12,10 @@ import { AsyncPipe, JsonPipe } from '@angular/common';
   styleUrl: './place-edit.component.scss',
 })
 export class PlaceEditComponent {
-  store = inject(Store);
-  place$ = this.store.select(PlacesSelectors.selectPlaceById);
+  #store = inject(Store);
+  place$ = this.#store.select(PlacesSelectors.selectPlaceById);
+
+  cancel() {
+    this.#store.dispatch(PlacesPageActions.cancelPlace());
+  }
 }

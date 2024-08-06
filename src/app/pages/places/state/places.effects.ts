@@ -1,8 +1,45 @@
-import { Actions, createEffect, ofType } from '@ngrx/effects';
+import {
+  Actions,
+  createEffect,
+  ofType,
+  ROOT_EFFECTS_INIT,
+} from '@ngrx/effects';
 import { inject } from '@angular/core';
 import { PlacesService } from '../../../services/places.service';
 import { PlacesApiActions, PlacesPageActions } from './places.actions';
-import { catchError, concatMap, exhaustMap, map, mergeMap, of } from 'rxjs';
+import {
+  catchError,
+  concatMap,
+  exhaustMap,
+  map,
+  mergeMap,
+  of,
+  tap,
+} from 'rxjs';
+import { Router } from '@angular/router';
+
+export const initPlacesState$ = createEffect(
+  (actions$ = inject(Actions)) => {
+    return actions$.pipe(
+      ofType(ROOT_EFFECTS_INIT),
+      map((action) => PlacesPageActions.loadPlaces()),
+    );
+  },
+  { functional: true },
+);
+
+export const returnHomeEffect$ = createEffect(
+  (actions$ = inject(Actions), router = inject(Router)) => {
+    return actions$.pipe(
+      ofType(PlacesPageActions.cancelPlace),
+      tap(() => router.navigate(['/places'])),
+    );
+  },
+  {
+    dispatch: false,
+    functional: true,
+  },
+);
 
 export const loadPlacesEffect$ = createEffect(
   (actions$ = inject(Actions), placesService = inject(PlacesService)) => {

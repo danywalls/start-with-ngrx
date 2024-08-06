@@ -2,7 +2,7 @@ import { Component, inject, input } from '@angular/core';
 import { Place } from '../../entities/place.model';
 import { Store } from '@ngrx/store';
 import { PlacesPageActions } from '../../pages/places/state/places.actions';
-import { Router, RouterLink } from '@angular/router';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-place-card',
@@ -14,7 +14,6 @@ import { Router, RouterLink } from '@angular/router';
 export class PlaceCardComponent {
   place = input.required<Place>();
   store = inject(Store);
-  router = inject(Router);
 
   edit() {
     this.store.dispatch(PlacesPageActions.selectPlace({ place: this.place() }));
