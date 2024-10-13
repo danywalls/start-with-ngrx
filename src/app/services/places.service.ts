@@ -1,7 +1,7 @@
 import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
-import { Observable } from 'rxjs';
+import {map, Observable} from 'rxjs';
 import { Place } from '../entities/place.model';
 
 @Injectable({
@@ -23,9 +23,10 @@ export class PlacesService {
   }
 
   getAll(): Observable<Array<Place>> {
-    return this.http.get<Array<Place>>(environment.menorcaPlacesAPI);
+    return this.http.get<Array<Place>>(environment.menorcaPlacesAPI).pipe(
+      map((response) => response.map(p => ({ ...p, avatar: 'https://picsum.photos/200/300', description: `${ p.name} is a great place` })))
+    );
   }
-
   delete(id: string): Observable<string> {
     return this.http.delete<string>(`${environment.menorcaPlacesAPI}/${id}`);
   }

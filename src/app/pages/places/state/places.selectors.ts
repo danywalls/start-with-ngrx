@@ -27,7 +27,8 @@ export const { selectRouteParams } = getRouterSelectors();
 export const selectPlaceById = createSelector(
   selectPlaces,
   selectRouteParams,
-  (places, { id }) => places.find((place) => place.id === id),
+  (places, { id }) => {
+    return places.find((place) => place.id === id)},
 );
 
 export default {

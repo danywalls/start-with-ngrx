@@ -19,6 +19,7 @@ export const placesReducer = createReducer(
 
   on(PlacesApiActions.loadSuccess, (state, { places }) => ({
     ...state,
+    loading: false,
     places: [...places],
   })),
   on(PlacesApiActions.loadFailure, (state, { message }) => ({
