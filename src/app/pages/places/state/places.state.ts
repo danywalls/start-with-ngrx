@@ -1,15 +1,17 @@
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
 import { Place } from '../../../entities/place.model';
 
-export type PlacesState = {
-  places: Array<Place>;
-  placeSelected: Place | undefined;
+export interface PlacesState extends EntityState<Place> {
+
+  selectedPlaceId: string | null;
   loading: boolean;
   error: string | undefined;
-};
+}
 
-export const placesInitialState: PlacesState = {
-  error: '',
+export const adapter: EntityAdapter<Place> = createEntityAdapter<Place>();
+
+export const placesInitialState: PlacesState = adapter.getInitialState({
+  selectedPlaceId: null,
   loading: false,
-  placeSelected: undefined,
-  places: [],
-};
+  error: '',
+});

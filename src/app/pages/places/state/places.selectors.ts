@@ -1,29 +1,31 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
-import { PlacesState } from './places.state';
+import { adapter, PlacesState } from './places.state';
+
+
+const { selectAll, selectEntities, selectIds, selectTotal } = adapter.getSelectors();
+
 
 const selectPlaceState = createFeatureSelector<PlacesState>('places');
 
-const selectPlaces = createSelector(
-  selectPlaceState,
-  (placeState) => placeState.places,
-);
 
-const selectPlaceSelected = createSelector(
-  selectPlaceState,
-  (placeState) => placeState.placeSelected,
+export const selectAllPlaces = createSelector(selectPlaceState, selectAll);
+export const selectPlaceEntities = createSelector(selectPlaceState, selectEntities);
+export const selectPlaceIds = createSelector(selectPlaceState, selectIds);
+export const selectPlaceTotal = createSelector(selectPlaceState, selectTotal);
+export const selectSelectedPlaceId = createSelector(
+    selectPlaceState,
+    (state) => state.selectedPlaceId
 );
-const selectLoading = createSelector(
-  selectPlaceState,
-  (placeState) => placeState.loading,
+export const selectSelectedPlace = createSelector(
+    selectPlaceEntities,
+    selectSelectedPlaceId,
+    (entities, selectedId) => selectedId ? entities[selectedId] : undefined
 );
-const selectError = createSelector(
-  selectPlaceState,
-  (placeState) => placeState.error,
+export const selectLoading = createSelector(
+    selectPlaceState,
+    (state) => state.loading
 );
-
-export default {
-  placesSelector: selectPlaces,
-  selectPlaceSelected: selectPlaceSelected,
-  loadingSelector: selectLoading,
-  errorSelector: selectError,
-};
+export const selectError = createSelector(
+    selectPlaceState,
+    (state) => state.error
+);
